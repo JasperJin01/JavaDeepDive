@@ -81,6 +81,9 @@ public class D01_Unsafe {
             }).start();
         }
 
+        synchronizededSet.iterator();
+        // FIXME 这个迭代器，老师debug得到d是EntrySet，但是为啥我debug的时候根本得不到？（好像iterator是空？）
+
     }
 
     public static void main(String[] args) {
