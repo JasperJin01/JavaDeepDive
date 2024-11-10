@@ -30,7 +30,7 @@ class MyRunnable implements Runnable {
 class MyCallable implements Callable<Integer> {
     @Override
     public Integer call() throws Exception {
-        Thread.sleep(1230);
+        Thread.sleep(3230);
         System.out.println("MyCallable");
         return 100;
     }
@@ -47,12 +47,15 @@ public class D01_CallableVsRunnable {
         // FutureTask继承自Runnable (FutureTask<-RunnableFuture<-Runnable, Future)，同时接收Callable作为属性
         FutureTask<Integer> futureTask = new FutureTask<>(new MyCallable());
         new Thread(futureTask, "t2").start();
+
+        System.out.println("futureTask.get() 正在阻塞");
+
         // 获取返回值
         Integer ret = futureTask.get();
         System.out.println("ret = " + ret);
 
-//        Integer ret2 = futureTask.get(); // 又get了一遍计算结果（并不会多次调用线程，即线程只执行一次）
-//        System.out.println("ret2 = " + ret2);
+        Integer ret2 = futureTask.get(); // 又get了一遍计算结果（并不会多次调用线程，即线程只执行一次）
+        System.out.println("ret2 = " + ret2);
 
         // 调用get会阻塞主线程！
         System.out.println("main");
