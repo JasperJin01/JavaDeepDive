@@ -28,24 +28,32 @@ public class D01_volatile {
 }
 
 
-// volatile 不能解决
+// volatile 不能解决原子性问题
 class Test {
-    static volatile Integer count = 0;
+    static Integer count = 0;
+    // Integer 是不可变对象：在 Java 中，Integer 是不可变的，每次对 count 的修改（如 count++）都会生成一个新的 Integer 对象。
+    // 也就是说，当 count++ 执行时，count 会被赋予一个新的对象引用，而不是在原来的对象上进行修改。
 
     public static void main(String[] args) throws InterruptedException {
+        Object lock = new Object();
         new Thread(() -> {
             for (int i = 0; i < 5000; i++) {
-                count++;
+//                synchronized (count) { // 错的
+                synchronized (lock) {
+                    count++;
+                }
             }
         }).start();
 
         new Thread(() -> {
             for (int i = 0; i < 5000; i++) {
-                count++;
+                synchronized (lock) {
+                    count++;
+                }
             }
         }).start();
 
-        Thread.sleep(1);
+        Thread.sleep(1000);
         System.out.println("count = " + count);
 
     }
