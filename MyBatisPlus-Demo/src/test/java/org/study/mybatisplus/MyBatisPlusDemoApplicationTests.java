@@ -73,4 +73,10 @@ class MyBatisPlusDemoApplicationTests {
         print();
     }
 
+    @Test
+    public void baseMapperTest() {
+        List<UserEntity> list = userService.getBaseMapper().selectList(null);
+        list.forEach(System.out::println);
+    }
+
 }

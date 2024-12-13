@@ -14,6 +14,7 @@ import java.util.concurrent.BlockingDeque;
 public class D01_BlockingQueue {
 
     ArrayBlockingQueue<String> arrayBlockingQueue = new ArrayBlockingQueue(3);
+    // TODO ArrayBlockingQueue 有一系列的入队、出队方法
     @Test
     public void test01() {
         System.out.println(arrayBlockingQueue.add("a"));
@@ -33,7 +34,7 @@ public class D01_BlockingQueue {
 
 }
 
-/**
+/*
  * NOTE idea 的一些快捷键
  *  cmd + opt + t: Code->surround with
  *  ctrl + h: Navigate->Hierarchy

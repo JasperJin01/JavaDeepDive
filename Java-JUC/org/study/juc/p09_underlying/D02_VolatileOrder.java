@@ -5,6 +5,7 @@ public class D02_VolatileOrder {
     static int x, y;
 
     // 有序性
+    // TODO 这个代码是证明啥的？添加点注释！看不懂了...
     public static void main(String[] args) throws InterruptedException {
         int i = 0;
         while (true) {

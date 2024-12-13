@@ -3,6 +3,11 @@ package org.study.juc.p05_util;
 import java.util.Random;
 import java.util.concurrent.CountDownLatch;
 
+/**
+ * CountDownLatch 对象，初始计数器值为 6，表示需要等待 6 个线程完成，这里表示教室里还有6个同学
+ * 创建的六个 thread 代表六个同学，他们分别经过一段时间后离开教室（调用countDownLatch.countDown）
+ * countDownLatch.await会阻塞 直到减为0才执行
+ */
 public class D01_CountDownLatch {
 
     public static void main(String[] args) {
