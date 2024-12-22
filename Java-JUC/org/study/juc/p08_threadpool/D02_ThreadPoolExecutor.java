@@ -7,7 +7,7 @@ public class D02_ThreadPoolExecutor {
 
     public static void main(String[] args) {
         // 自定义的线程池
-        ThreadPoolExecutor pool = new ThreadPoolExecutor(
+        ExecutorService pool = new ThreadPoolExecutor(
                 2, // 核心线程数
                 5, // 最大线程数
                 2, // 当到达一定时间后，核心线程之外的线程将会被回收
